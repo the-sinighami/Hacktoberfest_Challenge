@@ -1,4 +1,4 @@
-# Hactoberfest_Challenge_2
+# Hactoberfest_Challenge
 
 Register anytime between September 26 and October 31
 
