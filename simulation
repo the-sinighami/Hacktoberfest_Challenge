@@ -1,0 +1,30 @@
+#201251
+import simpy
+
+class School:
+    def __init__(self, env):
+        self.env = env
+        self.class_ends = env.event()
+        self.pupil_procs = [env.process(self.pupil()) for i in range(4)]
+        self.bell_proc = env.process(self.bell())
+
+
+    def bell(self):
+        for i in range(2):
+            print('\nClass starts at = %d' %self.env.now)
+            yield self.env.timeout(45)
+            self.class_ends.succeed()
+            self.class_ends = self.env.event()
+            print("bell ring", env.now)
+
+
+    def pupil(self):
+        for i in range(2):
+            print(r' \o/', end='')
+            yield self.class_ends
+
+
+env = simpy.Environment()
+school = School(env)
+env.run()
+print("201251")
